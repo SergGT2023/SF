@@ -143,21 +143,21 @@
     В консоли выведутся комментарии:
     <QuerySet [
     {
-    'comment_date_created': datetime.date(2021, 5, 11), 
+    'comment_date_created': datetime.date(2023, 4, 11), 
     'comment_user': 3, 
     'comment_rate': 1, 
     'feedback_text': 'Very interesting article'
     }, 
 
     {
-    'comment_date_created': datetime.date(2021, 5, 11), 
+    'comment_date_created': datetime.date(2023, 4, 11), 
     'comment_user': 4, 
     'comment_rate': 0, 
     'feedback_text': 'It is okay'
     }, 
 
     {
-    'comment_date_created': datetime.date(2021, 5, 12), 
+    'comment_date_created': datetime.date(2023, 4, 11), 
     'comment_user': 3, 
     'comment_rate': 8, 
     'feedback_text': 'Very interesting article'
