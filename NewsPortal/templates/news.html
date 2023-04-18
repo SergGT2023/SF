@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}!
+
+{% block title %}
+posts
+{% endblock title %}
+
+{% block content %}
+   <h3>{{ time_now|date:'M d Y' }}</h3>
+
+   <h3> Количество постов: {{Posts|length}} </h3>
+
+   <hr>
+   {% if Posts %}
+       <table>
+           <tr>
+               <td>Заголовок</td>
+               <td>Дата публикации</td>
+               <td>Текст</td>
+
+           </tr>
+
+           {% for Post in Posts %}
+           <tr>
+               <td>{{ Post.title }}</td>
+               <td>{{ Post.dateCreation|date:'d M Y' }}</td>
+               <td>{{ Post.text|truncatechars:20|censor}}</td>
+
+           {% endfor %}
+
+       </table>
+   {% else %}
+       <h2>Постов нет!</h2>
+   {% endif %}
+{% endblock content %}

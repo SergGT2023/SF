@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}!
+
+{% block title %}
+post
+{% endblock title %}
+
+{% block content %}
+   <h3>{{ time_now|date:'M d Y' }}</h3>
+   <hr>
+   {% if Post %}
+       <table>
+           <tr>
+               <td><h1> {{ Post.title }} </h1></td>
+           </tr>
+           <tr>
+               <td><h1>{{ Post.text|censor }}</h1></td>
+
+           </tr>
+           <tr>
+               <td><h1>{{ Post.dateCreation|date:' (d M Y)' }}</h1></td>
+           </tr>
+
+       </table>
+   {% else %}
+       <h2>Поста нет!</h2>
+   {% endif %}
+{% endblock content %}
