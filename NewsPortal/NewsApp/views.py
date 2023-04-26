@@ -26,3 +26,13 @@ class PostDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['time_now'] = datetime.utcnow()
         return context
+    from django.core.paginator import Paginator
+from django.shortcuts import render
+from .models import News
+
+def news(request):
+    news_list = News.objects.all()
+    paginator = Paginator(news_list, 10) # показывать по 10 новостей на странице
+    page = request.GET.get('page')
+    news = paginator.get_page(page)
+    return render(request, 'news.html', {'news': news})
