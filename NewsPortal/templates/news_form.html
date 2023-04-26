@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create/Edit News</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
+
+# news_confirm_delete.html
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Delete News</h1>
+    <p>Are you sure you want to delete "{{ news.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}
