@@ -36,3 +36,23 @@ def news(request):
     page = request.GET.get('page')
     news = paginator.get_page(page)
     return render(request, 'news.html', {'news': news})
+from django.shortcuts import render
+from .models import News
+
+def news_search(request):
+    title = request.GET.get('title')
+    author = request.GET.get('author')
+    date = request.GET.get('date')
+
+    news_list = News.objects.all()
+
+    if title:
+        news_list = news_list.filter(title__icontains=title)
+
+    if author:
+        news_list = news_list.filter(author__icontains=author)
+
+    if date:
+        news_list = news_list.filter(date__gte=date)
+
+    return render(request, 'news_search.html', {'news_list': news_list})
