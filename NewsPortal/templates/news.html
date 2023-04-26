@@ -34,3 +34,32 @@ posts
        <h2>Постов нет!</h2>
    {% endif %}
 {% endblock content %}
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>News</h1>
+    {% for n in news %}
+        <h2>{{ n.title }}</h2>
+        <p>{{ n.content }}</p>
+        <p>Author: {{ n.author }}</p>
+        <p>Date: {{ n.date }}</p>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if news.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ news.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ news.number }} of {{ news.paginator.num_pages }}.
+            </span>
+
+            {% if news.has_next %}
+                <a href="?page={{ news.next_page_number }}">next</a>
+                <a href="?page={{ news.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}
