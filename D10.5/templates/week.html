@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Рассылка по {{ category_name  }} </title>
+</head>
+<body>
+    <h1> Привет, {{ user }}, новое статьи по вашим подпискам! </h1>
+
+<hr>
+{% for news in text %}
+{{ news }}
+{% endfor%}
+<br>
+</body>
+</html>
