@@ -1,0 +1,65 @@
+2022-06-28 19:02:25,096 :: ERROR -- C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\utils\log.py / (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("'news' is not a registered namespace"), <traceback object at 0x000001F1EC9FC080>) :Internal Server Error: /news/1/edit/
+Traceback (most recent call last):
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'news'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\views\generic\base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\contrib\auth\mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\views\generic\base.py", line 119, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\views\generic\edit.py", line 208, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\views\generic\edit.py", line 135, in form_valid
+    self.object = form.save()
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\forms\models.py", line 548, in save
+    self.instance.save()
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\db\models\base.py", line 872, in save_base
+    post_save.send(
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\newsportal\NewsApp\signals.py", line 9, in notify_subscribers
+    new_post_subscription(instance)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\celery\local.py", line 188, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\celery\app\task.py", line 392, in __call__
+    return self.run(*args, **kwargs)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\newsportal\NewsApp\tasks.py", line 47, in new_post_subscription
+    send_emails(
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\newsportal\NewsApp\tasks.py", line 23, in send_emails
+    html = render_to_string(
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\template\defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'news' is not a registered namespace
+2022-06-28 19:02:25,118 :: ERROR -- C:\Users\Siman\PycharmProjects\ProjectD2\venv\lib\site-packages\django\core\servers\basehttp.py / None :"POST /news/1/edit/ HTTP/1.1" 500 188471
